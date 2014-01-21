@@ -164,4 +164,28 @@ class CarIntegrationTests extends GroovyTestCase {
 
   }
 
+  void testDeleteEngineInBeforeDeleteHandler() {
+
+    Engine e1 = new Engine(name: "dog", numberCylinders: 4, discontinued: Boolean.TRUE)
+    e1.save()
+    Car pinto = new Car(name: 'pinto', engine: e1)
+    assertNotNull(pinto.save(flush: true))
+
+    assertEquals(1, Engine.count())
+    assertEquals(1, Car.count())
+
+    sessionFactory.currentSession.flush()
+    sessionFactory.currentSession.clear()
+
+    println "========== Car Delete ==================="
+    pinto.delete(flush: true)
+
+    sessionFactory.currentSession.flush()
+    sessionFactory.currentSession.clear()
+
+    assertEquals(0, Engine.count())
+    assertEquals(0, Car.count())
+
+  }
+
 }
