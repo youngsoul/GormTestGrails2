@@ -14,8 +14,8 @@ environments {
 
   mysqldev {
     dataSource {
-      username = "jljsdlfkj"
-      password = "lsdkjlsjd"
+      username = "root"
+      password = "n0thing!"
       dbCreate = "update"
       logSql = "false"
       url = "jdbc:mysql://192.168.1.82/apdevtest?autoReconnect=true"

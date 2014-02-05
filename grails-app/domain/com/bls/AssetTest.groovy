@@ -1,5 +1,6 @@
 package com.bls
 
+@Mixin(DynamicPropertyMixin)
 class AssetTest {
   String keywords
   String comment
